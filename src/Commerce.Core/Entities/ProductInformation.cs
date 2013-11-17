@@ -61,5 +61,14 @@ namespace Commerce.Core.Entities
             return new ProductInformation(product);
         }
 
+        public static bool operator ==(ProductInformation a, ProductInformation b)
+        {
+            return Equals(a, b);
+        }
+
+        public static bool operator !=(ProductInformation a, ProductInformation b)
+        {
+            return !(a == b);
+        }
     }
 }

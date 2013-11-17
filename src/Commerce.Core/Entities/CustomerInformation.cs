@@ -54,5 +54,15 @@ namespace Commerce.Core.Entities
             if (customer == null) return null;
             return new CustomerInformation(customer);
         }
+
+        public static bool operator ==(CustomerInformation a, CustomerInformation b)
+        {
+            return Equals(a, b);
+        }
+
+        public static bool operator !=(CustomerInformation a, CustomerInformation b)
+        {
+            return !(a == b);
+        }
     }
 }

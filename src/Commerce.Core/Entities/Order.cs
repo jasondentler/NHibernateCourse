@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Commerce.Core.Entities
 {
-    public class Order : AggregateRoot<Order, long>
+    public class Order : IAggregateRoot<Order, long>
     {
 
         public Order(Customer customer, Address shippingAddress, Address billingAddress) : this((CustomerInformation) customer, shippingAddress, billingAddress)
@@ -31,5 +31,32 @@ namespace Commerce.Core.Entities
         public DateTime Placed { get; protected set; }
         public Address ShippingAddress { get; protected set; }
         public Address BillingAddress { get; protected set; }
+
+        public bool Equals(Order other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (ReferenceEquals(null, other)) return false;
+            return other.Id == Id && Id != 0;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Order);
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+
+        public static bool operator ==(Order a, Order b)
+        {
+            return Equals(a, b);
+        }
+
+        public static bool operator !=(Order a, Order b)
+        {
+            return !(a == b);
+        }
     }
 }

@@ -55,6 +55,15 @@ namespace Commerce.Core.Entities
             }
         }
 
+        public static bool operator ==(Address a, Address b)
+        {
+            return Equals(a, b);
+        }
+
+        public static bool operator !=(Address a, Address b)
+        {
+            return !(a == b);
+        }
     }
 }
 
