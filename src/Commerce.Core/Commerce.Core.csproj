@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ConfOrm">
+      <HintPath>..\packages\ConfOrm.2.0.0.0\lib\Net35\ConfOrm.dll</HintPath>
+    </Reference>
+    <Reference Include="ConfOrm.Shop">
+      <HintPath>..\packages\ConfOrm.2.0.0.0\lib\Net35\ConfOrm.Shop.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate">
       <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
     </Reference>
@@ -50,6 +56,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\IRepository.cs" />
     <Compile Include="DataAccess\Mappings\AddressMap.cs" />
+    <Compile Include="DataAccess\Mappings\ConformMapping.cs" />
     <Compile Include="DataAccess\Mappings\CustomerInformationMap.cs" />
     <Compile Include="DataAccess\Mappings\CustomerMap.cs" />
     <Compile Include="DataAccess\Mappings\OrderItemMap.cs" />
@@ -60,18 +67,24 @@
     <Compile Include="DataAccess\UriType.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="AddressBuilder.cs" />
+    <Compile Include="Entities\AggregateRoot.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\CustomerInformation.cs" />
+    <Compile Include="Entities\IAggregateRoot.cs" />
+    <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductInformation.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\ValueObject.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="IValueObject.cs" />
+    <Compile Include="Entities\IValueObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Entities\Entities.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

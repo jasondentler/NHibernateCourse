@@ -2,7 +2,7 @@
 
 namespace Commerce.Core.Entities
 {
-    public class OrderItem
+    public class OrderItem : Entity<OrderItem, long>
     {
 
         public OrderItem(Order order, int quantity, ProductInformation product) : this()

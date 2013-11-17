@@ -2,10 +2,9 @@
 
 namespace Commerce.Core.Entities
 {
-    public class Product
+    public class Product : AggregateRoot<Product, long>
     {
 
-        public long Id { get; protected set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }

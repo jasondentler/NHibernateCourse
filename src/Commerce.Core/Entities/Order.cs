@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Commerce.Core.Entities
 {
-    public class Order
+    public class Order : AggregateRoot<Order, long>
     {
 
         public Order(Customer customer, Address shippingAddress, Address billingAddress) : this((CustomerInformation) customer, shippingAddress, billingAddress)

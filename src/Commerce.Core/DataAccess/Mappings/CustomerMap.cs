@@ -11,5 +11,6 @@ namespace Commerce.Core.DataAccess.Mappings
             Id(x => x.Id).GeneratedBy.HiLo("100");
             Map(x => x.Name);
         }
+
     }
 }

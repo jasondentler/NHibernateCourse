@@ -3,7 +3,7 @@
 namespace Commerce.Core.Entities
 {
 
-    public class Customer 
+    public class Customer  : AggregateRoot<Customer, long>
     {
 
         public Customer(string name)
@@ -12,7 +12,6 @@ namespace Commerce.Core.Entities
             Name = name;
         }
 
-        public long Id { get; protected set; }
-        public string Name { get; set; }
+        public string Name { get; set; } 
     }
 }

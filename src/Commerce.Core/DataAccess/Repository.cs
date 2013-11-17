@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Linq;
+using Commerce.Core.Entities;
 using NHibernate;
 using NHibernate.Linq;
 
@@ -25,12 +26,12 @@ namespace Commerce.Core.DataAccess
             return _session.Query<T>();
         }
 
-        public T Load<T, TId>(TId id)
+        public T Load<T, TId>(TId id) where T : AggregateRoot<T, TId>
         {
             return _session.Load<T>(id);
         }
 
-        public T Get<T, TId>(TId id)
+        public T Get<T, TId>(TId id) where T : AggregateRoot<T, TId>
         {
             return _session.Get<T>(id);
         }
@@ -60,22 +61,22 @@ namespace Commerce.Core.DataAccess
             }
         }
 
-        public void Insert<T>(T entity)
+        public void Insert<T, TId>(T entity) where T : AggregateRoot<T, TId>
         {
             PerformFlushableActionTransactionally(() => _session.Save(entity));
         }
 
-        public void Delete<T>(T entity)
+        public void Delete<T, TId>(T entity) where T : AggregateRoot<T, TId>
         {
             PerformFlushableActionTransactionally(() => _session.Delete(entity));
         }
 
-        public void SaveOrUpdate<T>(T entity)
+        public void SaveOrUpdate<T, TId>(T entity) where T : AggregateRoot<T, TId>
         {
             PerformFlushableActionTransactionally(() => _session.SaveOrUpdate(entity));
         }
 
-        public void Refresh<T>(T entity)
+        public void Refresh<T, TId>(T entity) where T : AggregateRoot<T, TId>
         {
             _session.Refresh(entity);
             _needsFlush = true;
